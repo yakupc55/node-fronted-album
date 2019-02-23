@@ -7,6 +7,7 @@ const logger = require('morgan');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const login= require('./routes/login');
+const myAlbums= require('./routes/myAlbums');
 const app = express();
 
 // view engine setup
@@ -19,6 +20,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/',login);
+app.use('/',myAlbums);
 //app.use('/', indexRouter);
 //app.use('/users', usersRouter);
 

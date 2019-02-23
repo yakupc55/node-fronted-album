@@ -1,0 +1,75 @@
+body {
+    background: #2d343d;
+    text-align: center;
+
+}
+.ust{
+    width:100%;
+    height: 40px;
+    background: #8d340d;
+    text-align: center;
+}
+
+@media only screen and (max-width:959px){
+
+    .albums{
+        width:100%;
+        height: 150px;
+        background: #0d043d;
+        font-size: 12px;
+        float:left;
+        overflow-y:scroll;
+    }
+    .photos{
+        width:100%;
+        height: 160px;
+        background: #1d145d;
+        float:right;
+        overflow-y:scroll;
+    }
+
+    .small{
+        width: 20%;
+        height: 150px;
+        border:1px solid #666;
+    }
+    .big{
+        width: 98%;
+        height: 600px;
+        border:2px solid #666;
+    }
+
+}
+
+@media only screen and (min-width:960px){
+
+    .albums{
+        width:39%;
+        height: 300px;
+        background: #0d043d;
+        float:left;
+        border:2px solid #666;
+        font-size: 25px;
+        overflow-y:scroll;
+    }
+    .photos{
+        width:59%;
+        height: 300px;
+        background: #1d145d;
+        float:right;
+        overflow-y:scroll;
+        border:2px solid #666;
+    }
+
+    .small{
+        width: 160px;
+        height: 140px;
+        border:1px solid #666;
+    }
+    .big{
+        width: 600px;
+        height: 600px;
+        border:2px solid #666;
+    }
+
+}
