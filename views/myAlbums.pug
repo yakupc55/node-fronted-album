@@ -2,44 +2,12 @@ doctype html
 head
     title |MyAlbums
     link(rel='stylesheet' type='text/css' href='/stylesheets/myalbums.css')
-.ust
-    h1 My Albums and Photos
-.albums
-    a(href='') a1
-    br
-    a(href='') a2
-    br
-    a(href='') a3
-    br
-    a(href='') a4
-    br
-    a(href='') a5
-    br
-    a(href='') a6
-    br
-    a(href='') a7
-    br
-    a(href='') a8
-    br
-    a(href='') a9
-    br
-    a(href='') a10
-    br
-.photos
-    a(href='')
-        img.small(src='https://via.placeholder.com/150/323b60')
-    a(href='')
-        img.small(src='https://via.placeholder.com/150/323b60')
-    a(href='')
-        img.small(src='https://via.placeholder.com/150/323b60')
-    a(href='')
-        img.small(src='https://via.placeholder.com/150/323b60')
-    a(href='')
-        img.small(src='https://via.placeholder.com/150/323b60')
-    a(href='')
-        img.small(src='https://via.placeholder.com/150/323b60')
-    a(href='')
-        img.small(src='https://via.placeholder.com/150/323b60')
-    a(href='')
-        img.small(src='https://via.placeholder.com/150/323b60')
-img.big(src='https://via.placeholder.com/600/323b60')
+body
+    .ust
+        h1 My Albums and Photos
+    .albums
+        |!{albums}
+
+    .photos
+        |!{photos}
+    |!{big}
