@@ -27,7 +27,7 @@ router.get('/myalbums', (req, res, next)=>{
                     // derinlik algılama vardır sorgu değer [[sorgu1],[sorgu2]] şeklinde oluşturulabilir
                     let data=dizayn.olustur(['userId','==',u_id], ['id','title'],body);
                     let veri=dizayn.yayinla(["a",
-                        [["href","http://localhost:3000/myalbums/"+"#id#"]
+                        [["href","myalbums/"+"#id#"]
                             ,["tagArasi","#title#"],["tagSonu","<br>"]]],data);
                     res.render('MyAlbums',{albums : veri});
                 }else{
@@ -37,7 +37,7 @@ router.get('/myalbums', (req, res, next)=>{
         };
         calistir();
     }else{
-        return  res.redirect("http://localhost:3000/login");
+        return  res.redirect("login");
     }
 });
 
@@ -59,7 +59,7 @@ router.get('/myalbums/:album_id', (req, res, next)=>{
                         if (!error && response.statusCode == 200) {
                             //adresten dönen string içeriği yeni adli değişkenimize attık
                             const data = dizayn.olustur(['userId', '==', u_id], ['id', 'title'], body);
-                            const veri = dizayn.yayinla(["a", [["href", "http://localhost:3000/myalbums/"+"#id#"],
+                            const veri = dizayn.yayinla(["a", [["href", "../myalbums/"+"#id#"],
                                 ["tagArasi", "#title#"], ["tagSonu", "<br>"]]], data);
 
                             const data2 = dizayn.olustur(['albumId', '==', a_id],['id', 'thumbnailUrl','url'], body2);
@@ -75,7 +75,7 @@ router.get('/myalbums/:album_id', (req, res, next)=>{
         };
         calistir();
     }else{
-        return  res.redirect("http://localhost:3000/login");
+        return  res.redirect("../login");
     }
 
 });
