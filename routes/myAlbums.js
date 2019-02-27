@@ -15,11 +15,11 @@ const request = require('request');
 
 router.get('/myalbums', (req, res, next)=>{
     const user=req.session.user;
-    console.log(typeof user);
+    // console.log(typeof user);
     if(!(user==="" || user===null || (typeof  user)==="undefined")) {
         const u_id=parseInt(parseInt(user.substring(4)));
-        console.log(user.substring(4));
-        console.log("u_id",u_id);
+        // console.log(user.substring(4));
+        // console.log("u_id",u_id);
         const calistir = ()=>{
             request.get('https://jsonplaceholder.typicode.com/albums',  (error, response, body)=> {
                 if (!error && response.statusCode == 200) {
@@ -47,11 +47,11 @@ router.get('/myalbums', (req, res, next)=>{
 router.get('/myalbums/:album_id', (req, res, next)=>{
     const user=req.session.user;
     let a_id=parseInt(req.params.album_id);
-    console.log(typeof user);
+    // console.log(typeof user);
     if(!(user==="" || user===null || (typeof  user)==="undefined")) {
         const u_id=parseInt(parseInt(user.substring(4)));
-        console.log(user.substring(4));
-        console.log("u_id",u_id);
+        // console.log(user.substring(4));
+        // console.log("u_id",u_id);
         const calistir = ()=>{
             request.get('https://jsonplaceholder.typicode.com/albums',  (error, response, body)=> {
                 if (!error && response.statusCode == 200) {
