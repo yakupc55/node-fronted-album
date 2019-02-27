@@ -2,8 +2,9 @@ doctype html
 head
     title
     link(rel='stylesheet' type='text/css' href='/stylesheets/login.css')
-form.login
+form.login(method='post' action="")
     h1.login-title Login
-    input.login-input(type='text' placeholder='Email Adress' autofocus='')
-    input.login-input(type='password' placeholder='Password')
+    |!{hata}
+    input.login-input(type='text' placeholder='username' autofocus='' name='username')
+    input.login-input(type='password' placeholder='Password' name='password')
     input.login-button(type='submit' value='Login')

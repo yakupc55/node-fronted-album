@@ -193,7 +193,7 @@ let sonucId=-1;
 const taglar={name:["a", "img"],
             bas:["<a ","<img "],
             son:["</a>",""]};
-const ozNitelikler=["href","src","class"];
+const ozNitelikler=["href","src","class","onclick"];
 const konumlar={"tagArasi":"","tagSonu":"","tagBasi":""};
 
 let tagBulucu=(aranan)=>{

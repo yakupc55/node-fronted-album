@@ -4,10 +4,14 @@ head
     link(rel='stylesheet' type='text/css' href='/stylesheets/myalbums.css')
 body
     .ust
-        h1 My Albums and Photos
+        h1 My Albums and Photos -
+            a(href='http://localhost:3000/logout')
+                img(src='/icons/exit.png')
+            |-
     .albums
         |!{albums}
 
     .photos
         |!{photos}
-    |!{big}
+    img(src='' name='big')
+    script function degistir(degis){document.big.src=degis;}

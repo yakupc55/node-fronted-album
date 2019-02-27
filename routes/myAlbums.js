@@ -1,6 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const dizayn = require('./dizayn');
+const app = express();
+const session = require('express-session');
+app.use (session({
+    name : "login",
+    proxy : true ,
+    resave : true ,
+    saveUninitialized : true
+}));
+
 // uzak noktadaki json verisini okumak için lazım
 const request = require('request');
 /*let gelenVeri; //gelen verinin atılacağı değişken
@@ -22,6 +31,7 @@ router.get('/test', (req, res, next)=>{
     res.json(dizayn.olustur([['id','==',1]],['id','name'],deneme));
     console.log(dizayn.olustur([['id','==',1]],['id','name'],deneme))
 });
+
 
 router.get('/test2', (req, res, next)=>{
     const calistir = ()=>{
@@ -77,7 +87,31 @@ router.get('/test4', (req, res, next)=>{
 });
 
 router.get('/myalbums', (req, res, next)=>{
-    res.render('MyAlbums',{albums : "<a href='' >ahmet</a>"});
+    const user=req.session.user;
+    console.log(typeof user);
+    if(!(user==="" || user===null || (typeof  user)==="undefined")) {
+        const u_id=parseInt(parseInt(user.substring(4)));
+        console.log(user.substring(4));
+        console.log("u_id",u_id);
+        const calistir = ()=>{
+            request.get('https://jsonplaceholder.typicode.com/albums',  (error, response, body)=> {
+                if (!error && response.statusCode == 200) {
+                    //adresten dönen string içeriği yeni adli değişkenimize attık
+                    // derinlik algılama vardır sorgu değer [[sorgu1],[sorgu2]] şeklinde oluşturulabilir
+                    let data=dizayn.olustur(['userId','==',u_id], ['id','title'],body);
+                    let veri=dizayn.yayinla(["a",
+                        [["href","http://localhost:3000/myalbums/"+"#id#"]
+                            ,["tagArasi","#title#"],["tagSonu","<br>"]]],data);
+                    res.render('MyAlbums',{albums : veri});
+                }else{
+                    res.json('{}');
+                }
+            });
+        };
+        calistir();
+    }else{
+        return  res.redirect("http://localhost:3000/login");
+    }
 });
 
 
@@ -95,56 +129,44 @@ router.get('/okuma', (req, res, next) => {
     calistir();
 });
 
-router.get('/:user_id', (req, res, next)=>{
-    let u_id=parseInt(req.params.user_id);
-    const calistir = ()=>{
-        request.get('https://jsonplaceholder.typicode.com/albums',  (error, response, body)=> {
-            if (!error && response.statusCode == 200) {
-                //adresten dönen string içeriği yeni adli değişkenimize attık
-                // derinlik algılama vardır sorgu değer [[sorgu1],[sorgu2]] şeklinde oluşturulabilir
-                let data=dizayn.olustur(['userId','==',u_id], ['id','title'],body);
-                let veri=dizayn.yayinla(["a",
-                    [["href","http://localhost:3000/"+u_id+"/#id#"]
-                    ,["tagArasi","#title#"],["tagSonu","<br>"]]],data);
-                res.render('MyAlbums',{albums : veri});
-            }else{
-                res.json('{}');
-            }
-        });
-    };
-    calistir();
-});
-router.get('/:user_id/:album_id', (req, res, next)=>{
-    let u_id=parseInt(req.params.user_id);
+
+router.get('/myalbums/:album_id', (req, res, next)=>{
+    const user=req.session.user;
     let a_id=parseInt(req.params.album_id);
-    const calistir = ()=>{
-        request.get('https://jsonplaceholder.typicode.com/albums',  (error, response, body)=> {
-            if (!error && response.statusCode == 200) {
-                request.get('https://jsonplaceholder.typicode.com/albums/ALBUM_ID/photos',  (error2, response2, body2)=> {
-                    if (!error && response.statusCode == 200) {
-                        //adresten dönen string içeriği yeni adli değişkenimize attık
-                        const data = dizayn.olustur(['userId', '==', u_id], ['id', 'title'], body);
-                        const veri = dizayn.yayinla(["a", [["href", "http://localhost:3000/"+u_id+"/#id#"],
-                            ["tagArasi", "#title#"], ["tagSonu", "<br>"]]], data);
+    console.log(typeof user);
+    if(!(user==="" || user===null || (typeof  user)==="undefined")) {
+        const u_id=parseInt(parseInt(user.substring(4)));
+        console.log(user.substring(4));
+        console.log("u_id",u_id);
+        const calistir = ()=>{
+            request.get('https://jsonplaceholder.typicode.com/albums',  (error, response, body)=> {
+                if (!error && response.statusCode == 200) {
+                    request.get('https://jsonplaceholder.typicode.com/albums/ALBUM_ID/photos',  (error2, response2, body2)=> {
+                        if (!error && response.statusCode == 200) {
+                            //adresten dönen string içeriği yeni adli değişkenimize attık
+                            const data = dizayn.olustur(['userId', '==', u_id], ['id', 'title'], body);
+                            const veri = dizayn.yayinla(["a", [["href", "http://localhost:3000/myalbums/"+"#id#"],
+                                ["tagArasi", "#title#"], ["tagSonu", "<br>"]]], data);
 
-                        const data2 = dizayn.olustur(['albumId', '==', a_id],['id', 'thumbnailUrl'], body2);
-                        const veri2 = dizayn.yayinla([
-                            ["a",[["href","http://localhost:3000/"+u_id+"/"+a_id+"/#id#"],["tagSonu","\n"]]],
-                            ["img", [["src","#thumbnailUrl#"],["class","small"],["tagSonu","\n"]]
-                            ]
-                        ], data2);
+                            const data2 = dizayn.olustur(['albumId', '==', a_id],['id', 'thumbnailUrl','url'], body2);
+                            const veri2 = dizayn.yayinla(
+                                ["img", [["src","#thumbnailUrl#"],["class","small"],["tagSonu","\n"],["onclick","degistir(\"#url#\")"]]], data2);
 
-                        res.render('MyAlbums', {albums: veri, photos: veri2});
-                    } });
-            }else{
-                res.json('{}');
-            }
-
+                            res.render('MyAlbums', {albums: veri, photos: veri2});
+                        } });
+                }else{
+                    res.json('{}');
+                }
             });
-    };
-    calistir();
+        };
+        calistir();
+    }else{
+        return  res.redirect("http://localhost:3000/login");
+    }
+
 });
-router.get('/:user_id/:album_id/:photo_id', (req, res, next)=>{
+/*
+router.get('/myalbums/:user_id/:album_id/:photo_id', (req, res, next)=>{
     const u_id=parseInt(req.params.user_id); const a_id=parseInt(req.params.album_id); const p_id=parseInt(req.params.photo_id);
     const calistir = ()=>{
         request.get('https://jsonplaceholder.typicode.com/albums',  (error, response, body)=> {
@@ -153,11 +175,11 @@ router.get('/:user_id/:album_id/:photo_id', (req, res, next)=>{
                     if (!error && response.statusCode == 200) {
                         //adresten dönen string içeriği yeni adli değişkenimize attık
                         const data = dizayn.olustur(['userId', '==', u_id], ['id', 'title'], body);
-                        const veri = dizayn.yayinla(["a", [["href", "http://localhost:3000/"+u_id+"/#id#"],
+                        const veri = dizayn.yayinla(["a", [["href", "http://localhost:3000/myalbums/"+u_id+"/#id#"],
                             ["tagArasi", "#title#"], ["tagSonu", "<br>"]]], data);
                         const data2 = dizayn.olustur(['albumId', '==', a_id],['id', 'thumbnailUrl',"url"], body2);
                         const veri2 = dizayn.yayinla([
-                            ["a",[["href","http://localhost:3000/"+u_id+"/"+a_id+"/#id#"],["tagSonu","\n"]]],
+                            ["a",[["href","http://localhost:3000/myalbums/"+u_id+"/"+a_id+"/#id#"],["tagSonu","\n"]]],
                             ["img", [["src","#thumbnailUrl#"],["class","small"],["tagSonu","\n"]]
                             ] ], data2);
                         const url=dizayn.searchOne("id",p_id,data2,"url");
@@ -172,4 +194,5 @@ router.get('/:user_id/:album_id/:photo_id', (req, res, next)=>{
     };
     calistir();
 });
+*/
 module.exports = router;

@@ -9,7 +9,8 @@ const usersRouter = require('./routes/users');
 const login= require('./routes/login');
 const myAlbums= require('./routes/myAlbums');
 const app = express();
-
+const session = require('express-session');
+app.use(session({secret: "login"}));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
