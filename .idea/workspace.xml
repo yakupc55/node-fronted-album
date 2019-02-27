@@ -1,21 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/routes/myAlbums.js" line="119" mnemonic="2" />
-  </component>
   <component name="ChangeListManager">
     <list default="true" id="3be9bfd3-5926-4937-94c3-0e4bb42fdcff" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/routes/pass.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/stylesheets/myalbums.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/stylesheets/myalbums.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/dizayn.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/dizayn.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/login.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/myAlbums.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/myAlbums.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/login.pug" beforeDir="false" afterPath="$PROJECT_DIR$/views/login.pug" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/myAlbums.pug" beforeDir="false" afterPath="$PROJECT_DIR$/views/myAlbums.pug" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -31,11 +18,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/myAlbums.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="156" column="22" lean-forward="true" selection-start-line="156" selection-start-column="22" selection-end-line="156" selection-end-column="22" />
+            <state relative-caret-position="99">
+              <caret line="202" column="2" lean-forward="true" selection-start-line="202" selection-start-column="2" selection-end-line="202" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -79,11 +66,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/login.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="13" column="3" selection-start-line="13" selection-start-column="3" selection-end-line="13" selection-end-column="32" />
+            <state relative-caret-position="-345">
+              <caret line="15" column="67" selection-start-line="15" selection-start-column="67" selection-end-line="15" selection-end-column="67" />
             </state>
           </provider>
         </entry>
@@ -124,8 +111,8 @@
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/routes/login.js" />
         <option value="$PROJECT_DIR$/routes/dizayn.js" />
-        <option value="$PROJECT_DIR$/routes/myAlbums.js" />
         <option value="$PROJECT_DIR$/views/myAlbums.pug" />
+        <option value="$PROJECT_DIR$/routes/myAlbums.js" />
       </list>
     </option>
   </component>
@@ -218,12 +205,12 @@
       <option name="presentableId" value="Default" />
       <updated>1550772202733</updated>
       <workItem from="1550772205524" duration="625000" />
-      <workItem from="1550863063170" duration="69923000" />
+      <workItem from="1550863063170" duration="70482000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70548000" />
+    <option name="totallyTimeSpent" value="71107000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="349" y="80" width="948" height="632" extended-state="0" />
@@ -329,13 +316,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/myAlbums.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="156" column="22" lean-forward="true" selection-start-line="156" selection-start-column="22" selection-end-line="156" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/myAlbums.pug">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="86">
@@ -355,8 +335,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/login.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="13" column="3" selection-start-line="13" selection-start-column="3" selection-end-line="13" selection-end-column="32" />
+        <state relative-caret-position="-345">
+          <caret line="15" column="67" selection-start-line="15" selection-start-column="67" selection-end-line="15" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/myAlbums.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="202" column="2" lean-forward="true" selection-start-line="202" selection-start-column="2" selection-end-line="202" selection-end-column="2" />
         </state>
       </provider>
     </entry>
